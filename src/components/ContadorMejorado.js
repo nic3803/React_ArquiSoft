@@ -1,7 +1,7 @@
 import { type } from "@testing-library/user-event/dist/type";
 import { useReducer } from "react"
 import { contadorinit, contadorinitialState, contadorReducer } from "../reducers/contadorReducer";
-//import { TYPES } from "../actions/contadorActions";
+
 
 const initialState = {contador: 0};
 const init = (initialState) =>{
