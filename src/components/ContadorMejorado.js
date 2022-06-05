@@ -1,5 +1,7 @@
 import { type } from "@testing-library/user-event/dist/type";
 import { useReducer } from "react"
+import { contadorinit, contadorinitialState, contadorReducer } from "../reducers/contadorReducer";
+//import { TYPES } from "../actions/contadorActions";
 
 const initialState = {contador: 0};
 const init = (initialState) =>{
@@ -44,20 +46,19 @@ function reducer(state,action){
 
 
 
-const Contador = () =>{
+const ContadorMejorado = () =>{
 
     
 
-  //  const[contador, setContador] = useState(0)
-    const[state, dispacht] = useReducer(reducer,initialState, init);
 
-   // const sumar = () => setContador(contador  + 1)
+    const[state, dispacht] = useReducer(contadorReducer,contadorinitialState, contadorinit);
+
     const sumar = () => dispacht({type:"INCREMENT"});
     const restar = () => dispacht({type:"DECREMENT"});
     const resetear = () => dispacht({type:"RESET"})
     return(
         <div style={{textAlight:"center"}}>
-           <h2> Contador Reducer</h2>    
+           <h2> Contador Mejorado Reducer</h2>    
 
             <nav>
 
@@ -83,4 +84,4 @@ const Contador = () =>{
 
 }
 
-export default Contador
+export default ContadorMejorado
