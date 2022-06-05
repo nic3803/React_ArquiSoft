@@ -12,9 +12,9 @@ export const shoppingInitialState = {
         { id: 6, name: "Producto 6", price:140},
 
         ],
-        cart:[]
+        cart:[],
 
-}
+};
 
 
 export function shoppingReducer(state,action){
