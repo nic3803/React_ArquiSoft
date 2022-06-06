@@ -4,22 +4,25 @@ import ProductItem from "./ProductItem";
 
 const ShoppingCart = () =>{
 
-    const[state,dispacht] = useReducer(shoppingReducer, shoppingInitialState);
+    const[state,dispatch] = useReducer(shoppingReducer, shoppingInitialState);
 
 
         //ESTO HACE REFERENCIA AL ESTADO INICIAL
     const {products,cart} = state;
-    const addToCart = () => {};
+    const addToCart = (id) => {
+
+        console.log(id)
+
+    };
     const delFromCart = () => {};
     const clearCart = () => {};
 
     return(
-
         <div>
 
             <h2> Carrito De Compras  </h2>
             <h3> PRDUCTOS </h3>
-            <article className="box">
+            <article className="box grid_responsive">
             
             {products.map((product) => (<ProductItem key={product.id} data={product} addToCart={addToCart} />   ))};
             
@@ -30,9 +33,6 @@ const ShoppingCart = () =>{
             <article className="box"> </article>
 
         </div>
-
-
-
 
     );
 
