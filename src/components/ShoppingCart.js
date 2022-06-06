@@ -21,7 +21,7 @@ const ShoppingCart = () =>{
             <h3> PRDUCTOS </h3>
             <article className="box">
             
-            {products.map((product) => (<ProductItem key={product.id} data={product} addToCart={addToCart} />   ))}
+            {products.map((product) => (<ProductItem key={product.id} data={product} addToCart={addToCart} />   ))};
             
 
 
