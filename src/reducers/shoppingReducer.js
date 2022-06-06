@@ -1,4 +1,4 @@
-import { TYPES } from "../actions/ShoppingActions"
+import { TYPES } from "../actions/shoppingActions"
 
 export const shoppingInitialState = {
 
@@ -20,30 +20,25 @@ export const shoppingInitialState = {
 export function shoppingReducer(state,action){
 
         switch (action.type) {
-                case TYPES.ADD_TO_CART:{
+                case TYPES.ADD_TO_CART :{
 
                 }
                 
-                case TYPES.REMOVE_ONE_FROM_CART:{
+                case TYPES.REMOVE_ONE_FROM_CART: {
 
 
                 }
 
 
-                case TYPES.REMOVE_ALL_FROM_CART:{
+                case TYPES.REMOVE_ALL_FROM_CART: {
 
 
                 }
                 
-                case TYPES.CLEART_CART:{
-
+                case TYPES.CLEAR_CART: {
 
                 }
-
 
                  return state;
-        }
-
-
-        
+        }  
 }
