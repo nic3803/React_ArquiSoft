@@ -4,12 +4,12 @@ export const shoppingInitialState = {
 
         products: [ //DE ACA PUEDO TRAER LOS PRODUCTOS CON UN API
         //LOS HAGO YO PARA PROBAR
-        { id: 1, name: "Producto 1", price:100},
-        { id: 2, name: "Producto 2", price:300},
-        { id: 3, name: "Producto 3", price:10},
-        { id: 4, name: "Producto 4", price:200},
-        { id: 5, name: "Producto 5", price:109},
-        { id: 6, name: "Producto 6", price:140},
+        
+         { id_product: 1, name_product: "Producto 1", cost:100, stock: 5, category: "electronica",descripcion:"lindo" },
+         { id_product: 2, name_product: "Producto 2", cost:100, stock: 5, category: "electronica",descripcion:"lindo" },
+         { id_product: 3, name_product: "Producto 6", cost:1020, stock: 5, category: "electronica",descripcion:"lindo" },
+         { id_product: 4, name_product: "Producto 9", cost:10, stock: 5, category: "electronica",descripcion:"lindo" },
+         { id_product: 5, name_product: "Producto 4", cost:200, stock: 5, category: "electronica",descripcion:"lindo" },
 
         ],
         cart:[],
@@ -21,6 +21,10 @@ export function shoppingReducer(state,action){
 
         switch (action.type) {
                 case TYPES.ADD_TO_CART :{
+                        let newItem = state.products.find( (product) => product.id_product === action.payload);
+                       console.log(newItem);
+                       
+
 
                 }
                 
@@ -38,7 +42,7 @@ export function shoppingReducer(state,action){
                 case TYPES.CLEAR_CART: {
 
                 }
-
-                 return state;
+                default:
+                         return state;
         }  
 }
