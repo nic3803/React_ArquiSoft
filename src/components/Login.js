@@ -4,34 +4,36 @@ export default function Login(){
     const[emailOb,setEmail]= useState("");
     const[passwordOb,setPassword] = useState("");
 
-    const onChange =  (emailOb,passwordOb)=>{
-        setEmail(emailOb.target.value);
-        setPassword(passwordOb.target.value);
+    const onChangeEmail =  (email)=>{
+        setEmail(email.target.value);
+        
     }
+    
+    const onChangePas = (password)=>
+    setPassword(password.target.value);
+
+    
     const requestOptions={
+        headers: {'Content-Type': 'localhost:3306/login'},
         method: 'POST',
-        headers: {'Content-Type': '127.0.0.1:3306/login'},
         body: JSON.stringify({email : emailOb, password : passwordOb })
     };
 
     const login = ()=>{
-        const response = fetch('127.0.0.1:3306/login',requestOptions);
-        const data = response.json();
+        fetch('localhost:3306/login',requestOptions)
+        .then(response=>response.json())
+        .then(data=> console.log(data))
     };
-    const onSubmit = async ()=>{
+    const submit = ()=>{
         login()
     };
-
-
-
-
 
     return(
         <form>
         <h1>login</h1>
-        <input type="email" placeholder="email" onChange={onChange} value ={emailOb}></input>
-        <input type="password" placeholder="password" onChange={onChange} value={passwordOb}></input>
-        <button onClick={onSubmit}></button>
+        <input id="email" placeholder="email" onChange={onChangeEmail} value ={emailOb}></input>
+        <input id="password" placeholder="password" onChange={onChangePas} value={passwordOb}></input>
+        <button onClick={submit}></button>
         </form>
 
 
