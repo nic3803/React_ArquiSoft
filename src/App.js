@@ -1,5 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
+import Login from './components/Login';
 import Products from './components/Products'
 import Contador from './components/Contador';
 import ContadorMejorado from './components/ContadorMejorado';
@@ -11,8 +12,8 @@ function App() {
     <div>
     <h1> useReducer</h1>
     
-    <Products/>
-    <ShoppingCart/>
+    <Login/>
+  
      
      </div>
   );
