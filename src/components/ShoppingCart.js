@@ -18,8 +18,31 @@ const ShoppingCart = () =>{
 
 
     };
-    const delFromCart = () => {};
-    const clearCart = () => {};
+
+
+    const delFromCart = (id_product,all = false) => {
+        console.log(id_product,all)
+        if(all){
+
+            dispatch({type: TYPES.REMOVE_ALL_FROM_CART, payload: id_product});
+        } else {
+            dispatch({type: TYPES.REMOVE_ONE_FROM_CART, payload: id_product});
+        }
+
+
+    };
+
+
+
+
+
+
+
+    const clearCart = () => {
+
+        dispatch({type: TYPES.CLEAR_CART});
+
+    };
 //MAPEO DE PRODUCTOR (products.map((producr)).......)
     return(
         <div>
