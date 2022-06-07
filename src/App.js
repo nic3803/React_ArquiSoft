@@ -1,6 +1,8 @@
 import logo from './logo.svg';
 import './App.css';
-import Login from './components/Login';
+import {Paginas} from './components/Paginas'
+
+import {BrowserRouter as Router} from 'react-router-dom';
 import Products from './components/Products'
 import Contador from './components/Contador';
 import ContadorMejorado from './components/ContadorMejorado';
@@ -9,12 +11,10 @@ import ShoppingCart from './components/ShoppingCart';
 function App() {
 
   return (
-    <div>
-    <h1> useReducer</h1>
-    
-    <Login/>
-  
-     
+    <div className='App'>
+      <Router>
+        <Paginas/>
+      </Router> 
      </div>
   );
 }
