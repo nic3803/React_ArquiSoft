@@ -23,8 +23,22 @@ export function shoppingReducer(state,action){
                 case TYPES.ADD_TO_CART :{
                         let newItem = state.products.find( (product) => product.id_product === action.payload);
                        console.log(newItem);
-                       
+                       let itemInCart = state.cart.find((item) => item.id_product === newItem.id_product);//aca para q no repita muchas veces un producto
 
+
+                       return itemInCart
+                       ? {
+                           ...state,
+                           cart: state.cart.map((item) =>
+                             item.id_product === newItem.id_product
+                               ? { ...item, quantity: item.quantity + 1 }
+                               : item
+                           ),
+                         }
+                       : {
+                           ...state,
+                           cart: [...state.cart, { ...newItem, quantity: 1 }],
+                         };
 
                 }
                 

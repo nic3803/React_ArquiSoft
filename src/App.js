@@ -12,7 +12,7 @@ function App() {
     <h1> useReducer</h1>
     
     <Products/>
-    
+    <ShoppingCart/>
      
      </div>
   );
@@ -25,3 +25,18 @@ import*/
 /* <hr/>   <ShoppingCart></ShoppingCart>
     <hr/>   <ContadorMejorado></ContadorMejorado>   
     <hr/>   <Contador></Contador> */
+
+
+
+
+    //---------------------LO DEL AAGUS----------------------------
+    /* return (
+    <div>
+    <h1> useReducer</h1>
+    
+    <Products/>
+    
+     
+     </div>
+  );
+}*/
