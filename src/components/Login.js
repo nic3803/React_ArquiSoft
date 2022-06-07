@@ -27,7 +27,7 @@ export default function Login(){
            window.location.reload();
         }else{
             console.log(response.json())
-            window.location.replace('/') // mandar a pagina de productos
+            window.location.replace('/cart') // mandar a pagina de productos
         }})
         
     };

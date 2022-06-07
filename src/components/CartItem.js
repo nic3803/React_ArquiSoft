@@ -10,15 +10,14 @@ const CartItem = ({data, delFromCart}) =>{
         <h4>{name_product}</h4>
         <h5> ${cost}.00 x {quantity} = ${cost * quantity}.00 </h5>
         <h5> {descripcion}</h5>
-        <button> Eliminar</button>
-
+        <button onClick={() => delFromCart(id_product)}> Eliminar Uno</button>
+        <button onClick={() => delFromCart(id_product, true)}>Eliminar Todos</button>
         </div>
 
 
  
 
     );
-
 
 
 
