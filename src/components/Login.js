@@ -1,4 +1,4 @@
-import React,{useState,useEffect} from "react"
+import React,{ useState} from "react"
 
 export default function Login(){
     const[emailOb,setEmail]= useState("");
@@ -9,31 +9,41 @@ export default function Login(){
         
     }
     
-    const onChangePas = (password)=>
-    setPassword(password.target.value);
+    const onChangePas = (password)=>{
+    setPassword(password.target.value)};
 
     
     const requestOptions={
-        headers: {'Content-Type': 'localhost:3306/login'},
         method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        
         body: JSON.stringify({email : emailOb, password : passwordOb })
     };
 
-    const login = ()=>{
-        fetch('localhost:3306/login',requestOptions)
-        .then(response=>response.json())
-        .then(data=> console.log(data))
+    const login = async()=>{
+        fetch('http://127.0.0.1:3306/login',requestOptions)
+        .then(response => {if (response.status == 400) {
+           alert("user not found")
+           window.location.reload();
+        }else{
+            console.log(response.json())
+            window.location.replace('/') // mandar a pagina de productos
+        }})
+        
     };
-    const submit = ()=>{
-        login()
+   
+    const handleSubmit= (event)=>{
+        event.preventDefault();
+        login();
+
     };
 
     return(
-        <form>
+        <form onSubmit={handleSubmit}>
         <h1>login</h1>
         <input id="email" placeholder="email" onChange={onChangeEmail} value ={emailOb}></input>
         <input id="password" placeholder="password" onChange={onChangePas} value={passwordOb}></input>
-        <button onClick={submit}></button>
+        <input type="submit" value="sum"></input>
         </form>
 
 
