@@ -13,17 +13,15 @@ async function getProducts(){
 function showProducts (products){
     return  products.map((product)=>
     <div obj={product} key={product.id_product} className="product">
-        <ul>
-            <li>  {product.name_product}  </li> 
-            <li>   ${product.cost}     </li>
-            <li>   {product.category}    </li>
-            <li>   {product.stock}   </li>
-            <button >  Agregar  </button>
+        <ul className="Productos"> 
+            <li>  {product.name_product}     
+                <button >  Agregar  </button> 
+            </li> 
+            <li>  Precio: ${product.cost}     </li>
+            <li>   Categoria: {product.category}    </li>
+            <li>   Stock: { product.stock}   </li>
+            <li>Descripcion: {product.descripcion}</li>
         </ul>
-        <>
-            <a>{product.descripcion}</a>
-        </>
-    
      </div>)
 }
     
