@@ -10,17 +10,21 @@ async function getProducts(){
     .then(response=>response.json())
 }
 
-async function showProducts (products){
-    return await products.map((product)=>
+function showProducts (products){
+    return  products.map((product)=>
     <div obj={product} key={product.id_product} className="product">
-        <a className="name">{product.name_product}</a>
-        <a className="price">{product.cost}</a>
-        <div>
-            <a className="description">{product.descripcion}</a>
-        </div>
-        <a className="category">{product.category}</a>
-      <a className="stock">Stock: {product.stock}</a>
-    </div>)
+        <ul>
+            <li>  {product.name_product}  </li> 
+            <li>   ${product.cost}     </li>
+            <li>   {product.category}    </li>
+            <li>   {product.stock}   </li>
+            <button >  Agregar  </button>
+        </ul>
+        <>
+            <a>{product.descripcion}</a>
+        </>
+    
+     </div>)
 }
     
 
