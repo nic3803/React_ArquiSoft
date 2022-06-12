@@ -1,10 +1,36 @@
 import React, {useState,useEffect} from "react"
+import { ProductItem } from "./ProductItem";
 
+const loadOptions ={
+    method:'GET',
+    headers :{'Content-Type': 'application/'} 
+}
+async function getProducts(){
+    return await fetch('http://127.0.0.1:3306/product/all',loadOptions)
+    .then(response=>response.json())
+}
+
+async function showProducts (products){
+    return await products.map((product)=>
+    <div obj={product} key={product.id_product} className="product">
+        <a className="name">{product.name_product}</a>
+        <a className="price">{product.cost}</a>
+        <div>
+            <a className="description">{product.descripcion}</a>
+        </div>
+        <a className="category">{product.category}</a>
+      <a className="stock">Stock: {product.stock}</a>
+    </div>)
+}
+    
 
 export default function Products(){
     const[products,setProducts]= useState([])
     const[name, setName] = useState("");
     console.log(products)
+    if(products.length <=0){
+        getProducts().then(response=>{setProducts(response)})
+    }
     
     const onChange = (e) =>{
         setName(e.target.value)
@@ -13,11 +39,12 @@ export default function Products(){
         method:'GET',
         headers :{'Content-Type': 'application/'} 
     }
-    const productLoad = async()=>{
+    const onSubmit= () =>{
         fetch('http://127.0.0.1/product/all',loadOptions)
-        .then(response=>setProducts(response))
-
+        .then(response=>response.json())
+        .then(response=>setProducts(response));
         
+
     }
     const productsApi = async (keyPro) => {
        fetch('127.0.0.1:3306/product/product/'+keyPro)
@@ -25,34 +52,18 @@ export default function Products(){
         
        
     }   
-    const onSubmit = () =>{
-        productsApi()
-    }
+  
     
     
     //aca tengo que cargar los product
-    return <div style={{border:"thin solid gray", padding:"1rem"}}> 
+    return (
+        <>
+    <h3> PRODUCTOS </h3>
+    <div id="product">
+        {products.length>0 ? showProducts(products): <a>Nothing to show</a>}
     
-    <h4>  {name_product}  </h4> 
-    <h5>   ${cost}.00      </h5>
-
-    <button onClick={()=> addToCart(id_product)}>  Agregar  </button>
      </div>
+     </>
+    )
     
 }
-const ProductItem = ({data, addToCart}) => {
-    
-    let{id_product,name_product,cost,stock,category,descripcion} = data;  //aca tengo que cargar los product
-    return <div style={{border:"thin solid gray", padding:"1rem"}}> 
-    
-    <h4>  {name_product}  </h4> 
-    <h5>   ${cost}.00      </h5>
-
-    <button onClick={()=> addToCart(id_product)}>  Agregar  </button>
-     </div>
-
-
-    
-
-
-};
