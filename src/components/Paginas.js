@@ -3,6 +3,8 @@ import {Routes,Route, Router} from "react-router-dom"
 import Login from "./Login";
 import Products from "./Products";
 import ShoppingCart from "./ShoppingCart";
+import Home from "./Header"
+
 
 export const Paginas =()=>{
     return(
@@ -11,6 +13,8 @@ export const Paginas =()=>{
                 <Route path='/' exact element = {<Login/>}/>
                 <Route path='/cart' exact element={<ShoppingCart/>}/>
                 <Route path='/products' exact element={<Products/>}/>
+                
+                
             </Routes>
         </section>
 
