@@ -1,4 +1,5 @@
 import React,{ useState} from "react"
+import './Css/Login.css';
 
 export default function Login(){
     const[emailOb,setEmail]= useState("");
@@ -39,15 +40,19 @@ export default function Login(){
     };
 
     return(
-        <form onSubmit={handleSubmit}>
-        <h1>login</h1>
-        <input id="email" placeholder="email" onChange={onChangeEmail} value ={emailOb}></input>
-        <input id="password" placeholder="password" onChange={onChangePas} value={passwordOb}></input>
-        <input type="submit" value="sum"></input>
+        <div className="login-form">
+            <div className="form">
+        <form className="login-form" onSubmit={handleSubmit}>
+        <h1 className="Login">BIENVENIDO</h1>
+        <h5 className="Login">Por Favor Introduzca su Usuario</h5>
+        <div><input type="text" id="email" placeholder="email" onChange={onChangeEmail} value ={emailOb}></input></div>
+        <div><input className="password" type="password" id="password" placeholder="password" onChange={onChangePas} value={passwordOb}></input></div>
+        <button type="submit" value="Login" ></button>
         </form>
-
-
-    );
+        </div>
+        </div>
+          );
+    
 
 
 }
