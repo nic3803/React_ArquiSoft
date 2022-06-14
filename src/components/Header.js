@@ -8,8 +8,8 @@ function Header(){
         <div className = "header">
             <a href="#!" className="logo">TITULO ANASHE</a>
             <div>
-            <a href="http://127.0.0.1:3000/productos"  className="productos">Productos</a> 
-            </div>
+            
+            </div><a href="http://127.0.0.1:3000/products"  className="productos">Productos</a> 
         </div>
         
 

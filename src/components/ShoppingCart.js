@@ -48,16 +48,7 @@ const ShoppingCart = () =>{
         <div>
 
             <h2> Carrito De Compras  </h2>
-            <h3> PRDUCTOS </h3>
-            <article className="box grid_responsive">
             
-             
-            {products.map((product) => (<ProductItem key={product.id_product} data={product} addToCart={addToCart} />   ))};
-            
-
-
-             </article>
-            <h3> Carrito  </h3>
             <article className="box">
             
             <button onClick={clearCart}>Limpiar Carrito </button>
