@@ -35,17 +35,6 @@ export default function Products(){
     const[category,setCategory]=useState(false);
     const[name, setName] = useState("");
     const[cartProducts,setCartProducts]= useState ("");
-    
-    if(products==null||products.length <=0){
-        onsubmit()
-    }
-    
-    const onChangeSearch = async(search) =>{
-        setKeyPro(search.target.value);
-    }
-    const onChangeCat = async(category)=>{
-        setCategory(category.target.checked);
-    }
     const loadOptions ={
         method:'GET',
         headers :{'Content-Type': 'application/'} 
@@ -57,6 +46,19 @@ export default function Products(){
         
 
     }
+    if(products==null||products.length <=0){
+        onSubmit()
+    }
+    
+    const onChangeSearch = async(search) =>{
+        setKeyPro(search.target.value);
+    }
+    const onChangeCat = async(category)=>{
+        setCategory(category.target.checked);
+    }
+    
+    
+    
     const productsApi = async (keyPro) => {
         console.log(keyPro)
         if(keyPro==""){
