@@ -1,13 +1,45 @@
-import { useReducer } from "react";
+import { useReducer, useState } from "react";
 import { TYPES } from "../actions/shoppingActions";
 import { shoppingInitialState, shoppingReducer } from "../reducers/shoppingReducer";
 import ProductItem from "./ProductItem";
 import CartItem from "./CartItem";
+import { cartLoad } from "./Cookies";
 
+const loadProducOptions={
+    
+}
+async function ProductLoad(id_products){
+    const [products,setProduct] = useState([])
+    await fetch('http://127.0.0.1:3306/cart/ProLo',{
+        method: 'POST',
+        headers :{'Content-Type':'application/json'},
+        body: JSON.stringify({id_products: id_products})
+    })
+    .then(response=>response.json())
+    .then(response=>setProduct(response))
+
+    
+}
+
+function showProducts(products){
+    if(products == null||products.length<=0){
+        console.log(products)
+        return <div>
+            <h3>Cart empty :/</h3>
+        </div>
+    }
+
+}
+function productCartLoad(){
+let cookieProducts = cartLoad()
+    let products = ProductLoad(cookieProducts[0])
+    console.log(products)
+
+}
 const ShoppingCart = () =>{
 
     const[state,dispatch] = useReducer(shoppingReducer, shoppingInitialState);
-
+    const[product, setProduct] = useState(productCartLoad())
 
         //ESTO HACE REFERENCIA AL ESTADO INICIAL
     const {products,cart} = state;
@@ -45,13 +77,17 @@ const ShoppingCart = () =>{
     };
 //MAPEO DE PRODUCTOR (products.map((producr)).......)
     return(
+        
         <div>
 
             <h2> Carrito De Compras  </h2>
             
-            <article className="box">
+            <article className="box" >
+            <div id = "productsCart">
+                {products.length>0 ? showProducts(product): <a> Cart empty :/</a>}
+            </div>
             
-            <button onClick={clearCart}>Limpiar Carrito </button>
+            <button onClick={()=>{showProducts(product)}}>Limpiar Carrito </button>
             
             {cart.map((item, index) => (<CartItem key={index} data={item} delFromCart={delFromCart} />))}
 
