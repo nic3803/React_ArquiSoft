@@ -56,7 +56,6 @@ export function cartLoad(){
     });
     products[0]= id_products
     products[1]= cantidades
-    console.log(products);
     return products
 }
 
@@ -68,4 +67,38 @@ export function loginCookies(token){
     let newCookie = token
     Cookie.set("User",newCookie,{path:"/"})
     
+}
+export function deleteCart(){
+    let cookie = Cookie.get("Cart")
+    if(cookie == undefined){
+        return
+    }
+    Cookie.remove("Cart")
+}
+export function removeOneCart(id_p){
+    let cookie= Cookie.get("Cart")
+    if (cookie == undefined){
+        return
+    }
+    let newCookie = ""
+    let toCompare = cookie.split(";")
+    toCompare.forEach(detail => {
+        if(detail!=""){
+            let array = detail.split(",")
+            let id_product = array[0]
+            let cantidad = array[1]
+            if(id_p==id_product){
+                cantidad = Number(cantidad)-1
+            }
+            if (cantidad != 0){
+                newCookie += id_product + "," + cantidad + ";"
+            }
+
+        }
+    });
+    if(newCookie!= ""){
+        Cookie.set("Cart", newCookie,{path:"/"})
+        return
+    }
+    Cookie.remove("Cart ")
 }
