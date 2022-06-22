@@ -1,17 +1,24 @@
 import React from 'react';
 import './Css/Header.css';
 
-function Header(){
-    return(
+
+ function Header(){
+    return( 
     <nav>
 
         <div className = "header">
             <div>
-            <a className="logo"href="#!" >MERCADO PAN</a>
+            <img className="logo" src={require("./imagenes/mercado.png")} alt='logo'></img>
+            </div>
+        
+            <div className="clases">
+           <a className="botones" href="http://127.0.0.1:3000/products"  > PRODUCTOS </a>
+           <a className="botones" href="#!"> CATEGORIAS </a>
             </div>
             <div>
-            <a href="http://127.0.0.1:3000/products"  className="productos">Productos</a> 
+            <img className="carrito" src={require("./imagenes/carrito.png")} alt='logocarrp' href="#!"></img>
             </div>
+            
         </div>
         
 
@@ -19,5 +26,6 @@ function Header(){
 
     )
 }
+
 
 export default Header

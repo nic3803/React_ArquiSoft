@@ -47,7 +47,7 @@ export default function Login(){
         <h5 className="Login">Por Favor Introduzca su Usuario</h5>
         <div><input type="text" id="email" placeholder="email" onChange={onChangeEmail} value ={emailOb}></input></div>
         <div><input className="password" type="password" id="password" placeholder="password" onChange={onChangePas} value={passwordOb}></input></div>
-        <button type="submit" value="Login" ></button>
+        <button type="submit" value="Login" >Login</button>
         </form>
         </div>
         </div>
