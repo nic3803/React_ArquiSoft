@@ -12,9 +12,6 @@ async function getProducts(){
 }
 
 function showProducts (products){
-    if (products == null){
-        getProducts();
-    }
     return  products.map((product)=>
     <div obj={product} key={product.id_product} className="product">
         <ul className="Productos"> 
@@ -43,8 +40,6 @@ export default function Products(){
         fetch('http://127.0.0.1:3306/product/all',loadOptions)
         .then(response=>response.json())
         .then(response=>setProducts(response));
-        
-
     }
     if(products==null||products.length <=0){
         onSubmit()
@@ -53,11 +48,10 @@ export default function Products(){
     const onChangeSearch = async(search) =>{
         setKeyPro(search.target.value);
     }
+
     const onChangeCat = async(category)=>{
         setCategory(category.target.checked);
     }
-    
-    
     
     const productsApi = async (keyPro) => {
         console.log(keyPro)
