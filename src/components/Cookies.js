@@ -30,10 +30,12 @@ export default function addToCart(id_p){
     Cookie.set("Cart", newCookie,{path:"/"})
 }
 export function cartLoad(){
+    
     let cookie = Cookie.get("Cart")
     let products = []
     if(cookie == undefined){
-        products =[]
+        products =[0,0]
+        console.log("Cookies",products)
         return products
     }
     

@@ -35,13 +35,14 @@ async function ProductLoad(id_products){
     let array = [];
     id_products.forEach(id => array.push(id));
     let obj = {id_products: array};
-
+    console.log("to fecth")
     return fetch('http://127.0.0.1:3306/cart/ProLo',{
         method: 'POST',
         headers :{'Content-Type':'application/json; charset=utf-8'},
         body: JSON.stringify(obj)
     })
     .then(response=>response.json())
+    
     
 }
 
@@ -67,23 +68,23 @@ function showProducts(products){
 
 }
 async function productCartLoad(){
+    
     let cookieProducts = cartLoad()
-    if(cookieProducts[0]!= undefined){
-    let products = await ProductLoad(cookieProducts[0])
-    if(products==undefined){
-        return [0,0]
-    }
+    if(cookieProducts[0]!=[0]){
+        let products = await ProductLoad(cookieProducts[0])
 
-    products.forEach(p=>{
-        for(let i = 0;i<cookieProducts[0].length;i++){
-            if(p.id_product ==cookieProducts[0][i]){
-                p.cant = parseInt(cookieProducts[1][i])
-            } 
-        }
-    })
-    console.log(products)
-    return products
+        products.forEach(p=>{
+            for(let i = 0;i<cookieProducts[0].length;i++){
+                if(p.id_product ==cookieProducts[0][i]){
+                    p.cant = parseInt(cookieProducts[1][i])
+                } 
+            }
+        })
+        console.log("for each")
+        return products
     }
+    console.log("ningun if")
+    return [0]
 }
 const ShoppingCart = () =>{
 
@@ -92,11 +93,13 @@ const ShoppingCart = () =>{
 
         //ESTO HACE REFERENCIA AL ESTADO INICIAL
     if(product == undefined||product.length==0){
-        productCartLoad()
-        .then(response=>setProduct(response))
+        productCartLoad().then(response=>{if(response!=[]){setProduct(response)}})
+
     }
 
+
     function clearCart (){
+        console.log("wtf")
         deleteCart()
         setProduct([])
 
@@ -110,14 +113,14 @@ const ShoppingCart = () =>{
             
             <article className="box" >
             <div id = "productsCart">
-                {product.length>0 ? showProducts(product): <a> Cart empty :/</a>}
+                {product[0]!=0 ? showProducts(product): <a> Cart empty :/</a>}
             </div>
             
             <button onClick={()=>{clearCart(product)}}>Limpiar Carrito </button>
             
              </article>
             
-            <button onClick={()=>{NewOrder(product)}}> Comprar</button>
+            <button onClick={()=>{NewOrder(product);clearCart(product)}}> Comprar</button>
 
         </div>
 
