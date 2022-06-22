@@ -102,3 +102,11 @@ export function removeOneCart(id_p){
     }
     Cookie.remove("Cart ")
 }
+export function getUserCookies(){
+    let cookie= Cookie.get("User")
+    if (cookie == undefined){
+        return
+    }
+    return cookie
+
+}

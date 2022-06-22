@@ -6,6 +6,7 @@ import CartItem from "./CartItem";
 import addToCart, { cartLoad } from "./Cookies";
 import {removeOneCart} from "./Cookies"
 import {deleteCart} from "./Cookies";
+import {getUserCookies} from "./Cookies";
 import Cookies from "universal-cookie";
 import Products from "./Products";
 
@@ -14,7 +15,22 @@ function addToCartCart(detalle){
 
     detalle.cant+=1
 }
+function NewOrder(products){
+    console.log("xd",products)
+    let userId = getUserCookies()
+    let order = {
+        id_user: userId,
+        detail: products
+    }
+    console.log(order)
+    fetch('http://127.0.0.1:3306/compra/add',{
+        method: 'PUT',
+        headers :{'Content-Type':'application/json; charset=utf-8'},
+        body: JSON.stringify(order)
+    })
+    .then(response=>response.json())
 
+}
 async function ProductLoad(id_products){
     let array = [];
     id_products.forEach(id => array.push(id));
@@ -61,7 +77,7 @@ async function productCartLoad(){
     products.forEach(p=>{
         for(let i = 0;i<cookieProducts[0].length;i++){
             if(p.id_product ==cookieProducts[0][i]){
-                p.cant = cookieProducts[1][i]
+                p.cant = parseInt(cookieProducts[1][i])
             } 
         }
     })
@@ -75,7 +91,6 @@ const ShoppingCart = () =>{
     const[product, setProduct] = useState([])
 
         //ESTO HACE REFERENCIA AL ESTADO INICIAL
-    const {products,cart} = state;
     if(product == undefined||product.length==0){
         productCartLoad()
         .then(response=>setProduct(response))
@@ -95,12 +110,14 @@ const ShoppingCart = () =>{
             
             <article className="box" >
             <div id = "productsCart">
-                {products.length>0 ? showProducts(product): <a> Cart empty :/</a>}
+                {product.length>0 ? showProducts(product): <a> Cart empty :/</a>}
             </div>
             
             <button onClick={()=>{clearCart(product)}}>Limpiar Carrito </button>
             
              </article>
+            
+            <button onClick={()=>{NewOrder(product)}}> Comprar</button>
 
         </div>
 
