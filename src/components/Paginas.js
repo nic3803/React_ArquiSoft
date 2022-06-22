@@ -4,6 +4,7 @@ import Login from "./Login";
 import Products from "./Products";
 import ShoppingCart from "./ShoppingCart";
 import Home from "./Header"
+import OrderHistory from "./OrderHistory";
 
 
 export const Paginas =()=>{
@@ -13,7 +14,7 @@ export const Paginas =()=>{
                 <Route path='/' exact element = {<Login/>}/>
                 <Route path='/cart' exact element={<ShoppingCart/>}/>
                 <Route path='/products' exact element={<Products/>}/>
-                
+                <Route path='/OrderHistory' exact element={<OrderHistory/>}></Route>
                 
             </Routes>
         </section>

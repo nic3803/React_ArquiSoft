@@ -80,10 +80,8 @@ async function productCartLoad(){
                 } 
             }
         })
-        console.log("for each")
         return products
     }
-    console.log("ningun if")
     return [0]
 }
 const ShoppingCart = () =>{
@@ -99,7 +97,6 @@ const ShoppingCart = () =>{
 
 
     function clearCart (){
-        console.log("wtf")
         deleteCart()
         setProduct([])
 

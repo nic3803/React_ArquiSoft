@@ -15,8 +15,9 @@ import './Css/Header.css';
            <a className="botones" href="http://127.0.0.1:3000/products"  > PRODUCTOS </a>
            <a className="botones" href="#!"> CATEGORIAS </a>
             </div>
-            <div>
-            <img className="carrito" src={require("./imagenes/carrito.png")} alt='logocarrp' href="#!"></img>
+            <div><a href="http://127.0.0.1:3000/cart">
+            <img className="carrito" src={require("./imagenes/carrito.png")} alt='logocarrp'></img>
+            </a>
             </div>
             
         </div>

@@ -35,7 +35,6 @@ export function cartLoad(){
     let products = []
     if(cookie == undefined){
         products =[0,0]
-        console.log("Cookies",products)
         return products
     }
     
