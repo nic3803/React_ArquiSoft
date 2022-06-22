@@ -20,7 +20,7 @@ function NewOrder(products){
     let userId = getUserCookies()
     let order = {
         id_user: userId,
-        detail: products
+        detalles: products
     }
     console.log(order)
     fetch('http://127.0.0.1:3306/compra/add',{
