@@ -117,7 +117,7 @@ const ShoppingCart = () =>{
             
              </article>
             
-            <button onClick={()=>{NewOrder(product);clearCart(product)}}> Comprar</button>
+            {product[0]!= 0 ? <button onClick={()=>{NewOrder(product);clearCart(product)}}> Comprar</button>:<a></a>}
 
         </div>
 
